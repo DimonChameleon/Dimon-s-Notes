@@ -70,7 +70,6 @@
   </header>
   <main></main>
   <div class="modal">
-
     <div class="modal-content">
       <div class="inputs">
         <input placeholder="Заголовок">
@@ -84,39 +83,23 @@
           <div></div>
           <div></div>
         </div>
-        <div class="panel2">
-          <div>
-            <a style="
-            padding-left: 7px;
-            font-weight: bold;
-            font-size: 20px;
-            ">B</a>
-          </div>
-          <div>
-            <a style="
-            padding-left: 7px;
-            font-style: italic;
-            font-family: monospace;
-            font-size: 20px;
-            ">I</a>
-          </div>
-          <div>
-            <a style="
-            padding-left: 7px;
-            text-decoration: underline;
-            font-size: 20px;
-            ">U</a>
-          </div>
-          <div>
-            <a style="
-            padding-left: 7px;
-            text-decoration: line-through;
-            font-size: 20px;
-            ">U</a>
-          </div>
+        <div class="panel">
+          <div>B</div>
+          <div>I</div>
+          <div>U</div>
+          <div>U</div>
         </div>
       </div>
-      <!-- <span class="close" onpointerup="closeNoteModal()">&times;</span> -->
+      
+      <div class="note-buttons">
+        <svg onpointerup="closeNoteModal()" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.979004" y="3.8075" width="4" height="30" rx="2" transform="rotate(-45 0.979004 3.8075)" fill="white"/>
+          <rect x="22.1923" y="0.979126" width="4" height="30" rx="2" transform="rotate(45 22.1923 0.979126)" fill="white"/>
+        </svg>
+        <svg onpointerup="saveNote()" width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.82861 7.5428L10.5715 16.2857L25.1429 1.71423" stroke="white" stroke-width="4"/>
+        </svg>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>
