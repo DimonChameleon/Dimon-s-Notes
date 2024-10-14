@@ -10,11 +10,20 @@ addNote.onpointerup = () => {
 const closeNoteModal = () => notesModal.style.display = ''
 
 const saveNote = () => {
-    const name = notesModal.querySelector('input').value.trim()
+    const title = notesModal.querySelector('input').value.trim()
     const text = notesModal.querySelector('textarea').value.trim()
 
-    const note = { name, text }
-    localStorage.setItem('saved-note', JSON.stringify(note))
+    if (!title && !text) {
+        Swal.fire({
+            title: 'Ошибка',
+            text: 'Введите заголовок или текст заметки',
+            icon: 'error',
+            showConfirmButton: false
+        })
 
+        return
+    }
+
+    localStorage.setItem('saved-note', JSON.stringify({ title, text }))
     closeNoteModal()
 }
