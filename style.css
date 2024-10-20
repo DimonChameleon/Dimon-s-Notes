@@ -90,6 +90,45 @@ header {
     }
 }
 
+main {
+    & ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 1rem;
+        margin: 1rem;
+        flex-wrap: wrap;
+
+        & li {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+            border: .07rem rgb(120, 120, 120) solid;
+            border-radius: .7rem;
+            padding: 1rem;
+            cursor: pointer;
+
+            &:hover {
+                background: rgb(240, 240, 240);
+                border-color: rgb(70, 70, 70);
+            }
+
+            & span {
+                &:first-child {
+                    font-weight: bold;
+                    color: rgb(30, 30, 30);
+                    font-size: 1.1rem;
+                }
+
+                &:last-child {
+                    color: rgb(70, 70, 70);
+                }
+            }
+        }
+    }
+}
+
 @keyframes modal-animate {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -231,9 +270,9 @@ header {
     }
 
     & .note-buttons {
-        position: fixed;
-        left: 47%;
-        top: 72.5%;
+        position: relative;
+        /* left: 47%;
+        top: 72.5%; */
         background: #ececec;
         border-radius: 1.2rem;
         display: flex;
