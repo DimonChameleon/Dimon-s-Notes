@@ -68,12 +68,23 @@
         </svg>
     </div>
   </header>
-  <main></main>
+  <main>
+    <ul></ul>
+  </main>
   <div class="modal">
     <div class="modal-content">
       <div class="inputs">
         <input placeholder="Заголовок">
         <textarea placeholder="Текст"></textarea>
+      </div>
+      <div class="note-buttons" style="top: 97%; height: 27px; left: -39%;">
+        <svg onpointerup="closeNoteModal()" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0.979004" y="3.8075" width="4" height="30" rx="2" transform="rotate(-45 0.979004 3.8075)" fill="white"/>
+          <rect x="22.1923" y="0.979126" width="4" height="30" rx="2" transform="rotate(45 22.1923 0.979126)" fill="white"/>
+        </svg>
+        <svg onpointerup="saveNote()" width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1.82861 7.5428L10.5715 16.2857L25.1429 1.71423" stroke="white" stroke-width="4"/>
+        </svg>
       </div>
       <div class="panels">
         <div class="panel">
@@ -90,15 +101,7 @@
           <div>U</div>
         </div>
       </div>
-      <div class="note-buttons">
-        <svg onpointerup="closeNoteModal()" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0.979004" y="3.8075" width="4" height="30" rx="2" transform="rotate(-45 0.979004 3.8075)" fill="white"/>
-          <rect x="22.1923" y="0.979126" width="4" height="30" rx="2" transform="rotate(45 22.1923 0.979126)" fill="white"/>
-        </svg>
-        <svg onpointerup="saveNote()" width="27" height="20" viewBox="0 0 27 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.82861 7.5428L10.5715 16.2857L25.1429 1.71423" stroke="white" stroke-width="4"/>
-        </svg>
-      </div>
+      
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
