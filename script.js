@@ -9,12 +9,12 @@ addNote.onpointerup = () => {
 
 const closeNoteModal = () => notesModal.style.display = ''
 
-const createNoteMarkup = (title, text) => {
+const createNoteMarkup = note => {
     const titleSpan = document.createElement('span')
-    titleSpan.textContent = title
+    titleSpan.textContent = note.title
 
     const textSpan = document.createElement('span')
-    textSpan.textContent = text
+    textSpan.textContent = note.text
 
     const li = document.createElement('li')
     li.append(titleSpan, textSpan)
@@ -37,7 +37,30 @@ const saveNote = () => {
         return
     }
     
-    document.querySelector('main ul').append(createNoteMarkup(title, text))
-    localStorage.setItem('saved-note', JSON.stringify({ title, text }))
+    // 1. получить из localStorage хранимую строку
+    // 2. распарсить (преобразовать) полученную строку в список
+    // 3. добавить в список новую заметку
+    // 4. преобразовать список обратно в строку
+    // 5. записать новую строку в localStorage
+
+    const note = { title, text}
+    const notes = JSON.parse(localStorage.getItem('saved-notes') || '[]')
+    notes.push(note)
+    localStorage.setItem('saved-notes', JSON.stringify(notes))
+
+    document.querySelector('main ul').append(createNoteMarkup(note))
     closeNoteModal()
 }
+
+const notes = JSON.parse(localStorage.getItem('saved-notes') || '[]')
+const ul = document.querySelector('main ul')
+
+// for..of
+for (const note of notes) {
+    ul.append(createNoteMarkup(note))
+}
+
+ul.innerHTML = ''
+
+// forEach
+notes.forEach(note => ul.append(createNoteMarkup(note)))
