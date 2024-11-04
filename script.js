@@ -18,7 +18,7 @@ const createNoteMarkup = note => {
 
     const li = document.createElement('li')
     li.append(titleSpan, textSpan)
-
+    li.className = "note-static";
     return li
 }
 
@@ -60,7 +60,78 @@ for (const note of notes) {
     ul.append(createNoteMarkup(note))
 }
 
-ul.innerHTML = ''
+// ul.innerHTML = ''
 
 // forEach
-notes.forEach(note => ul.append(createNoteMarkup(note)))
+// notes.forEach(note => ul.append(createNoteMarkup(note)))
+
+// for..of & forEach VS for
+
+// const numbers = [1, 2, 3, 4, 5]
+// console.log(numbers)
+
+// for (const number of numbers) {
+//     number *= 2
+// }
+
+// console.log(numbers.map(n => n * 2))
+// console.log(numbers)
+
+// const products = [
+//     {
+//         title: 'мебель',
+//         price: 75,
+//         amount: 2
+//     },
+//     {
+//         title: 'мороженое',
+//         price: 6,
+//         amount: 4
+//     }
+// ]
+
+// for (const product of products) {
+//     for (const key in product) {
+//         console.log(key)
+//         console.log(product[key])
+//     }
+
+//     console.log('\n')
+// }
+
+// const products2 = products.map(p => ({
+//     good: {
+//         name: p.title,
+//         price: p.price * 100
+//     },
+//     quantity: p.amount * 1000
+// }))
+
+// console.log(products)
+// console.log(products2)
+
+// const goods = [
+//     {
+//         good: {
+//             name: 'мебель',
+//             price: 7500
+//         },
+//         quantity: 2000
+//     },
+//     {
+//         good: {
+//             name: 'мороженое',
+//             price: 600
+//         },
+//         quantity: 4000
+//     }
+// ]
+
+// const result = JSON.parse(localStorage.getItem('name'))
+// console.log(result.name)
+// console.log(result.age)
+
+// localStorage.setItem('name', JSON.stringify({
+//     name: 'artem',
+//     age: 20
+// }))
