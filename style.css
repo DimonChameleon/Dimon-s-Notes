@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
 ::-webkit-scrollbar {
     width: 1.25rem;
@@ -12,7 +12,7 @@
 ::-webkit-scrollbar-thumb {
     background-color: #e8b931;
     border-radius: 1.25rem;
-    border: .375rem solid transparent;
+    border: 0.375rem solid transparent;
     background-clip: content-box;
 
     &:hover {
@@ -31,26 +31,26 @@ input {
 
 header {
     margin: 0;
-    background: #E8B931;
-    padding: .5rem .5rem;
-    border-radius: 0 0 .8rem .8rem;
-    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .4);
+    background: #e8b931;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0 0 0.8rem 0.8rem;
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
 
     & div {
         background: #dadada;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: .25rem .8rem;
-        border-radius: .6rem;
-        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .4);
+        padding: 0.25rem 0.8rem;
+        border-radius: 0.6rem;
+        box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
 
         & span {
             font-family: Quicksand;
             font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: .3rem;
+            gap: 0.3rem;
 
             & svg {
                 --logo-size: 2rem;
@@ -63,24 +63,24 @@ header {
             box-shadow: inset 1px 3px 5px 0px rgba(184, 163, 87, 1);
             padding: 0 1.2rem;
             height: 2.5rem;
-            background: rgba(245, 217, 116, .7);
+            background: rgba(245, 217, 116, 0.7);
             border-width: 0;
             border-radius: 1.2rem;
             width: 25%;
             text-align: center;
-    
+
             &:focus {
                 background: rgb(245, 217, 116);
             }
         }
-    
+
         & .add {
             --add-size: 2.2rem;
             width: var(--add-size);
             height: var(--add-size);
             cursor: pointer;
-            opacity: .75;
-            transition: .2s;
+            opacity: 0.75;
+            transition: 0.2s;
             border-radius: 50%;
 
             &:hover {
@@ -101,28 +101,57 @@ main {
         flex-wrap: wrap;
 
         & li {
+            width: 10rem;
+            height: 6rem;
             display: flex;
             flex-direction: column;
-            gap: .5rem;
-            border: .07rem rgb(120, 120, 120) solid;
-            border-radius: .7rem;
-            padding: 1rem;
+            gap: 0.5rem;
+            border: 0.07rem rgb(120, 120, 120) solid;
+            border-radius: 0.7rem;
             cursor: pointer;
+            background: #ffe8a3;
+            padding: 1rem 0.4rem 0.4rem 1rem;
+            border-radius: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            box-shadow:
+                0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
 
             &:hover {
                 background: rgb(240, 240, 240);
                 border-color: rgb(70, 70, 70);
             }
 
-            & span {
-                &:first-child {
-                    font-weight: bold;
-                    color: rgb(30, 30, 30);
-                    font-size: 1.1rem;
-                }
+            & div {
+                display: flex;
+                flex-direction: column;
+                gap: 0.3rem;
 
-                &:last-child {
-                    color: rgb(70, 70, 70);
+                & span {
+                    &:first-child {
+                        font-weight: bold;
+                        color: rgb(30, 30, 30);
+                        font-size: 1.1rem;
+                    }
+
+                    &:last-child {
+                        color: rgb(70, 70, 70);
+                    }
+                }
+            }
+
+            & .material-symbols-outlined {
+                color: rgba(255, 49, 49, 0.75);
+                background: rgb(210, 210, 210);
+                padding: 0.3rem;
+                border-radius: 50%;
+                align-self: end;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+                &:hover {
+                    background: rgb(190, 190, 190);
+                    color: rgba(255, 49, 49, 0.9);
                 }
             }
         }
@@ -130,12 +159,16 @@ main {
 }
 
 @keyframes modal-animate {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .modal {
-    animation: modal-animate .3s;
+    animation: modal-animate 0.3s;
     display: none;
     position: fixed;
     z-index: 1;
@@ -144,7 +177,7 @@ main {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background: rgba(0, 0, 0, .4);
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(2px);
     align-items: center;
     justify-content: center;
@@ -152,18 +185,21 @@ main {
 
 .modal-content {
     background: #ffe8a3;
-    padding: .25rem 1rem;
-    padding-right: .25rem;
+    padding: 0.25rem 1rem;
+    padding-right: 0.25rem;
     width: 34rem;
     height: 22rem;
     border-radius: 1rem;
     display: flex;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
 
     & .inputs {
         padding-top: 1rem;
 
-        & input, & textarea {
+        & input,
+        & textarea {
             background: #ffe8a3;
             width: 95%;
             border: 0;
@@ -173,18 +209,18 @@ main {
                 color: #8e815a;
             }
         }
-    
+
         & input {
             font-size: 1.7rem;
             font-weight: bold;
         }
-        
+
         & textarea {
             height: 80%;
             margin-top: 1rem;
             font-size: 1.4rem;
             resize: none;
-    
+
             &:focus {
                 outline: none;
             }
@@ -194,17 +230,17 @@ main {
     & .panels {
         display: flex;
         flex-direction: column;
-        gap: .25rem;
+        gap: 0.25rem;
 
         & .panel {
             background: #e8b931;
-            box-shadow: inset 1px 3px 2px 0px rgba(178,142,38,1);
+            box-shadow: inset 1px 3px 2px 0px rgba(178, 142, 38, 1);
             display: flex;
             flex-direction: column;
-            gap: .3rem;
+            gap: 0.3rem;
             border-radius: 1rem;
-            padding: .3rem .2rem;
-            transition: .2s;
+            padding: 0.3rem 0.2rem;
+            transition: 0.2s;
 
             &:last-child {
                 & div {
@@ -236,13 +272,13 @@ main {
                 width: var(--size);
                 height: var(--size);
                 border-radius: 50%;
-                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .5);
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
                 cursor: pointer;
-                transition: .2s;
+                transition: 0.2s;
 
                 &:hover {
                     transform: scale(1.1);
-                    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
+                    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
                     filter: saturate(1.5);
                 }
 
@@ -276,20 +312,20 @@ main {
         background: #ececec;
         border-radius: 1.2rem;
         display: flex;
-        gap: .8rem;
-        padding: .1rem .15rem;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .5);
+        gap: 0.8rem;
+        padding: 0.1rem 0.15rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
 
         & svg {
             --size: 1.3rem;
-            padding: .15rem;
+            padding: 0.15rem;
             width: var(--size);
             height: var(--size);
             color: #fff;
             border-radius: 1rem;
-            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
             cursor: pointer;
-            transition: .2s;
+            transition: 0.2s;
 
             &:hover {
                 transform: scale(1.07);
@@ -299,20 +335,10 @@ main {
             &:first-child {
                 background: #c73434;
             }
-    
+
             &:last-child {
-                background: #34Cc59;
+                background: #34cc59;
             }
         }
-       
     }
-}
-
-.note-static {
-    background: #ffe8a3;
-    padding: .25rem 1rem;
-    padding-right: .25rem;
-    border-radius: .3rem;
-    display: flex;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
 }
