@@ -9,7 +9,7 @@ addNote.onpointerup = () => {
 
 const closeNoteModal = () => (notesModal.style.display = "");
 
-const createNoteMarkup = (note) => {
+const createNoteMarkup = note => {
   const titleSpan = document.createElement("span");
   titleSpan.textContent = note.title;
   titleSpan.className = "noteTitle"
@@ -84,27 +84,34 @@ const saveNote = () => {
 
 const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]");
 const ul = document.querySelector("main ul");
-notes.forEach((note) => ul.append(createNoteMarkup(note)));
+notes.forEach((note) => ul.append(createNoteMarkup(note)))
 
+const searchNote = e => {
+  const searchStr = e.target.value.trim().toLowerCase()
+  ul.innerHTML = ''
 
-const searchNote = document.querySelector(".searchNote");
-const allNoteTitles = document.querySelectorAll(".noteTitle");
+  if (!searchStr) {
+    notes.forEach(note => ul.append(createNoteMarkup(note)))
+    return
+  }
 
-    searchNote.onkeyup = () => {
-      const searchStr = searchNote.value
-      allNoteTitles.forEach((item) => {
-        titleStr = item.innerText
-        if (titleStr.includes(searchStr)){
-          item.style.color = 'red'
-        }
-        else{
-          item.style.color = 'black'
-        }; 
-        });
-        
-    };
-4
+  const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(searchStr))
 
+  if (!filteredNotes.length) {
+    if (ul.querySelector('img')) {
+      return
+    }
 
+    const notFoundImg = document.createElement('img')
+    notFoundImg.src = 'not-found.png'
+    notFoundImg.style.marginLeft ="auto"
+    notFoundImg.style.marginRight ="auto"
+    notFoundImg.style.filter = "drop-shadow(#525d6d 2px 2px .5px)"
+    ul.append(notFoundImg)
 
+     
+    return
+  }
 
+  filteredNotes.forEach(note => ul.append(createNoteMarkup(note)))
+}
