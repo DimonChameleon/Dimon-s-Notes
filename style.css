@@ -297,23 +297,23 @@ main {
                 }
 
                 &:first-child {
-                    background: rgb(250 147 147);
+                    background: rgb(250, 147, 147);
                 }
 
                 &:nth-child(2) {
-                    background: rgb(255 232 163);
+                    background: rgb(255, 232, 163);
                 }
 
                 &:nth-child(3) {
-                    background: rgb(194 255 173);
+                    background: rgb(194, 255, 173);
                 }
 
                 &:nth-child(4) {
-                    background: rgb(171 255 235);
+                    background: rgb(171, 255, 235);
                 }
 
                 &:last-child {
-                    background: rgb(214 161 255);
+                    background: rgb(214, 161, 255);
                 }
             }
         }
