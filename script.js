@@ -5,7 +5,7 @@ addNote.onpointerup = () => {
   notesModal.querySelector("input").value = "";
   notesModal.querySelector("textarea").value = "";
   notesModal.style.display = "flex";
-};
+}
 
 const closeNoteModal = () => (notesModal.style.display = "");
 
@@ -56,7 +56,7 @@ const createNoteMarkup = note => {
   const li = document.createElement("li")
   li.append(panelDiv, deleteIcon)
   return li
-};
+}
 
 const saveNote = () => {
   const title = notesModal.querySelector("input").value.trim();
@@ -80,11 +80,11 @@ const saveNote = () => {
 
   document.querySelector("main ul").append(createNoteMarkup(note));
   closeNoteModal();
-};
+}
 
 const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]");
 const ul = document.querySelector("main ul");
-notes.forEach((note) => ul.append(createNoteMarkup(note)))
+notes.forEach(note => ul.append(createNoteMarkup(note)))
 
 const searchNote = e => {
   const searchStr = e.target.value.trim().toLowerCase()
@@ -104,14 +104,17 @@ const searchNote = e => {
 
     const notFoundImg = document.createElement('img')
     notFoundImg.src = 'not-found.png'
-    notFoundImg.style.marginLeft ="auto"
-    notFoundImg.style.marginRight ="auto"
-    notFoundImg.style.filter = "drop-shadow(#525d6d 2px 2px .5px)"
     ul.append(notFoundImg)
-
-     
     return
   }
 
   filteredNotes.forEach(note => ul.append(createNoteMarkup(note)))
+}
+
+const colorButtons = notesModal.querySelectorAll('.panel:first-child div')
+
+for (const [i, colorButton] of colorButtons.entries()) {
+  colorButton.onpointerup = () => {
+    notesModal.querySelector('div').style.background = '' + ['rgb(250 147 147)', 'rgb(255 232 163)', 'rgb(194 255 173)', 'rgb(171 255 235)', 'rgb(214 161 255)'][i]
+  }
 }
