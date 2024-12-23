@@ -54,6 +54,7 @@ const createNoteMarkup = note => {
   };
 
   const li = document.createElement("li")
+  li.style.background = note.color
   li.append(panelDiv, deleteIcon)
   return li
 }
@@ -73,16 +74,21 @@ const saveNote = () => {
     return
   }
 
-  const note = { title, text };
-  const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]");
-  notes.push(note);
-  localStorage.setItem("saved-notes", JSON.stringify(notes));
+  const note = {
+    title,
+    text,
+    color: notesModal.querySelector('div').style.background
+  }
 
-  document.querySelector("main ul").append(createNoteMarkup(note));
-  closeNoteModal();
+  const notes = JSON.parse(localStorage.getItem('saved-notes') || '[]')
+  notes.push(note)
+  localStorage.setItem('saved-notes', JSON.stringify(notes))
+
+  document.querySelector('main ul').append(createNoteMarkup(note))
+  closeNoteModal()
 }
 
-const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]");
+const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]")
 const ul = document.querySelector("main ul");
 notes.forEach(note => ul.append(createNoteMarkup(note)))
 
@@ -115,6 +121,6 @@ const colorButtons = notesModal.querySelectorAll('.panel:first-child div')
 
 for (const [i, colorButton] of colorButtons.entries()) {
   colorButton.onpointerup = () => {
-    notesModal.querySelector('div').style.background = '' + ['rgb(250 147 147)', 'rgb(255 232 163)', 'rgb(194 255 173)', 'rgb(171 255 235)', 'rgb(214 161 255)'][i]
+    notesModal.querySelector('div').style.background = 'rgb(' + ['250, 147, 147', '255, 232, 163', '194, 255, 173', '171, 255, 235', '214, 161, 255'][i] + ')'
   }
 }
