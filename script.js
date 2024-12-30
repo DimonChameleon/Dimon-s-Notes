@@ -1,5 +1,5 @@
-const addNote = document.querySelector(".add");
-const notesModal = document.querySelector(".modal");
+const addNote = document.querySelector('.add')
+const notesModal = document.querySelector('.modal')
 
 addNote.onpointerup = () => {
   notesModal.querySelector("input").value = "";
@@ -7,7 +7,7 @@ addNote.onpointerup = () => {
   notesModal.style.display = "flex";
 }
 
-const closeNoteModal = () => (notesModal.style.display = "");
+const closeNoteModal = () => (notesModal.style.display = "")
 
 const createNoteMarkup = note => {
   const titleSpan = document.createElement("span");
@@ -16,6 +16,26 @@ const createNoteMarkup = note => {
 
   const textSpan = document.createElement("span");
   textSpan.textContent = note.text;
+  console.log(typeof note.font)
+  console.log(note.font)
+
+  try{
+    if (note.font.includes("italic")) {
+      textSpan.style.fontStyle = "italic"
+    }
+    if (note.font.includes("underline")) {
+      textSpan.style.textDecoration = "underline"
+    }
+    if (note.font.includes("strikethrough")) {
+      textSpan.style.textDecoration = "line-through"
+    }
+    if (note.font.includes("bold")) {
+      textSpan.style.fontWeight = "bold"
+    }
+  }
+
+  catch{}
+
 
   const panelDiv = document.createElement("div");
   panelDiv.append(titleSpan, textSpan);
@@ -77,7 +97,8 @@ const saveNote = () => {
   const note = {
     title,
     text,
-    color: notesModal.querySelector('div').style.background
+    color: notesModal.querySelector('div').style.background,
+    font: Array.from(textarea.classList)
   }
 
   const notes = JSON.parse(localStorage.getItem('saved-notes') || '[]')
@@ -122,5 +143,31 @@ const colorButtons = notesModal.querySelectorAll('.panel:first-child div')
 for (const [i, colorButton] of colorButtons.entries()) {
   colorButton.onpointerup = () => {
     notesModal.querySelector('div').style.background = 'rgb(' + ['250, 147, 147', '255, 232, 163', '194, 255, 173', '171, 255, 235', '214, 161, 255'][i] + ')'
+  }
+}
+
+const fontButtons = notesModal.querySelectorAll('.panel:last-child div')
+const fontStyles = ['bold', 'italic', 'underline', 'strikethrough']
+const textarea = notesModal.querySelector('textarea')
+
+for (const [i, fontButton] of fontButtons.entries()) {
+  fontButton.onpointerup = () => {
+    const checkLastButtons = (a, b) => {
+      if (i === a && fontButtons.item(b).classList.contains('active')) {
+        fontButtons.item(b).classList.remove('active')
+        textarea.classList.remove(fontStyles[b])
+      }
+    }
+
+    if (fontButton.classList.contains('active')) {
+      textarea.classList.remove(fontStyles[i])
+      fontButton.classList.remove('active')
+    } else {
+      checkLastButtons(2, 3)
+      checkLastButtons(3, 2)
+
+      textarea.classList.add(fontStyles[i])
+      fontButton.classList.add('active')
+    }
   }
 }
