@@ -47,6 +47,7 @@ header {
 
         & span {
             font-family: Quicksand;
+            user-select: none;
             font-size: 1.3rem;
             display: flex;
             align-items: center;
@@ -60,10 +61,11 @@ header {
         }
 
         & input {
-            box-shadow: inset 1px 3px 5px 0px rgba(184, 163, 87, 1);
+            box-shadow: inset 1px 3px 5px 0px rgb(184, 163, 87);
+            user-select: none;
             padding: 0 1.2rem;
             height: 2.5rem;
-            background: rgba(245, 217, 116, 0.7);
+            background: rgba(245, 217, 116, .7);
             border-width: 0;
             border-radius: 1.2rem;
             width: 25%;
@@ -141,15 +143,16 @@ main {
 
             & .material-symbols-outlined {
                 color: rgb(151, 0, 0);
-                background: rgba(0, 0, 0, 0.160);
-                padding: 0.3rem;
+                background: rgba(0, 0, 0, .160);
+                padding: .3rem;
                 border-radius: 50%;
                 align-self: end;
-                box-shadow: inset 1px 2px 5px 0px rgba(0, 0, 0, 0.239);
+                box-shadow: inset 1px 2px 5px 0px rgba(0, 0, 0, .239);
+                user-select: none;
 
                 &:hover {
                     background: rgb(190, 190, 190);
-                    color: rgba(255, 49, 49, 0.9);
+                    color: rgba(255, 49, 49, .9);
                 }
             }
         }
@@ -234,6 +237,22 @@ main {
             &:focus {
                 outline: none;
             }
+
+            &.bold {
+                font-weight: bold;
+            }
+
+            &.italic {
+                font-style: italic;
+            }
+
+            &.underline {
+                text-decoration: underline;
+            }
+
+            &.strikethrough {
+                text-decoration: line-through;
+            }
         }
     }
 
@@ -249,14 +268,20 @@ main {
             flex-direction: column;
             gap: 0.3rem;
             border-radius: 1rem;
-            padding: 0.3rem 0.2rem;
-            transition: 0.2s;
+            padding: .3rem .2rem;
+            transition: .2s;
+            user-select: none;
 
             &:last-child {
                 & div {
                     background: #ececec !important;
                     text-align: center;
                     font-size: 1.25rem;
+
+                    &.active {
+                        background: rgb(50, 50, 50) !important;
+                        color: rgb(245, 245, 245);
+                    }
 
                     &:first-child {
                         font-weight: bold;
