@@ -19,7 +19,7 @@ const createNoteMarkup = note => {
   console.log(typeof note.font)
   console.log(note.font)
 
-  try{
+  
     if (note.font.includes("italic")) {
       textSpan.style.fontStyle = "italic"
     }
@@ -32,9 +32,7 @@ const createNoteMarkup = note => {
     if (note.font.includes("bold")) {
       textSpan.style.fontWeight = "bold"
     }
-  }
 
-  catch{}
 
 
   const panelDiv = document.createElement("div");
@@ -171,3 +169,8 @@ for (const [i, fontButton] of fontButtons.entries()) {
     }
   }
 }
+
+fetch("https://www.google.co.uk/").then((responce)=>{
+  return responce.json()
+}).then((responce)=>{console.log(responce)}).catch(()=>{console.log('erorr')})
+
