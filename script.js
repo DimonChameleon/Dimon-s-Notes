@@ -7,40 +7,38 @@ addNote.onpointerup = () => {
   notesModal.style.display = "flex";
 }
 
-const closeNoteModal = () => (notesModal.style.display = "")
+const closeNoteModal = () => notesModal.style.display = ''
 
 const createNoteMarkup = note => {
   const titleSpan = document.createElement("span");
-  titleSpan.textContent = note.title;
-  titleSpan.className = "noteTitle"
+  titleSpan.textContent = note.title
+  titleSpan.className = 'noteTitle'
 
   const textSpan = document.createElement("span");
-  textSpan.textContent = note.text;
-  console.log(typeof note.font)
-  console.log(note.font)
+  textSpan.textContent = note.text
 
-  
-    if (note.font.includes("italic")) {
-      textSpan.style.fontStyle = "italic"
-    }
-    if (note.font.includes("underline")) {
-      textSpan.style.textDecoration = "underline"
-    }
-    if (note.font.includes("strikethrough")) {
-      textSpan.style.textDecoration = "line-through"
-    }
-    if (note.font.includes("bold")) {
-      textSpan.style.fontWeight = "bold"
+  if (note.font) {
+    if (note.font.includes('bold')) {
+      textSpan.style.fontWeight = 'bold'
     }
 
+    if (note.font.includes('italic')) {
+      textSpan.style.fontStyle = 'italic'
+    }
 
+    if (note.font.includes('underline')) {
+      textSpan.style.textDecoration = 'underline'
+    } else if (note.font.includes('strikethrough')) {
+      textSpan.style.textDecoration = 'line-through'
+    }
+  }
 
-  const panelDiv = document.createElement("div");
-  panelDiv.append(titleSpan, textSpan);
+  const panelDiv = document.createElement('div')
+  panelDiv.append(titleSpan, textSpan)
 
-  const deleteIcon = document.createElement("span");
-  deleteIcon.classList = "material-symbols-outlined";
-  deleteIcon.textContent = "delete";
+  const deleteIcon = document.createElement('span')
+  deleteIcon.classList = 'material-symbols-outlined'
+  deleteIcon.textContent = 'delete'
 
   deleteIcon.onpointerup = () => {
     const spans = li.querySelectorAll('div span')
@@ -120,7 +118,8 @@ const searchNote = e => {
     return
   }
 
-  const filteredNotes = notes.filter(note => note.title.toLowerCase().includes(searchStr))
+  const filteredNotes = notes.filter(note => (note.title.toLowerCase().includes(searchStr) || note.text.toLowerCase().includes(searchStr)))
+
 
   if (!filteredNotes.length) {
     if (ul.querySelector('img')) {
@@ -169,8 +168,3 @@ for (const [i, fontButton] of fontButtons.entries()) {
     }
   }
 }
-
-fetch("https://www.google.co.uk/").then((responce)=>{
-  return responce.json()
-}).then((responce)=>{console.log(responce)}).catch(()=>{console.log('erorr')})
-
