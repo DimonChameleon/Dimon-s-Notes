@@ -67,7 +67,7 @@ const createNoteMarkup = note => {
             showConfirmButton: false
         })
     }
-  };
+  }
 
   const li = document.createElement("li")
   li.style.background = note.color
@@ -168,3 +168,6 @@ for (const [i, fontButton] of fontButtons.entries()) {
     }
   }
 }
+
+const filterButton = document.querySelector('header section span')
+filterButton.onpointerup = () => document.querySelector('#sorting-block').classList.toggle('enabled')
