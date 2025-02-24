@@ -1,14 +1,11 @@
 <!doctype html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Notes</title>
-        <link href="style.css" rel="stylesheet" />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete"
-        />
+        <link href="style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
     </head>
     <body>
         <header>
@@ -132,7 +129,13 @@
                     </svg>
                     Notes
                 </span>
-                <input oninput="searchNote(event)" placeholder="Search a note" />
+                <section>
+                    <span class="material-symbols-outlined">filter_alt</span>
+                    <input oninput="searchNote(event)" placeholder="Search a note">
+                </section>
+                <aside id="sorting-block">
+                    123
+                </aside>
                 <svg
                     class="add"
                     width="73"
