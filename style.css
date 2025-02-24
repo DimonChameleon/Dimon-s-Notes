@@ -60,19 +60,62 @@ header {
             }
         }
 
-        & input {
-            box-shadow: inset 1px 3px 5px 0px rgb(184, 163, 87);
-            user-select: none;
-            padding: 0 1.2rem;
-            height: 2.5rem;
-            background: rgba(245, 217, 116, .7);
-            border-width: 0;
-            border-radius: 1.2rem;
-            width: 25%;
-            text-align: center;
+        & section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
 
-            &:focus {
-                background: rgb(245, 217, 116);
+            & span.material-symbols-outlined {
+                color: rgb(50, 50, 50);
+                filter: drop-shadow(1px 1px 1px rgb(150, 150, 150));
+                font-size: 1.8rem;
+                cursor: pointer;
+                border-radius: 50%;
+                padding: .2rem;
+
+                &:hover {
+                    background: rgb(70, 70, 70);
+                    color: rgb(240, 240, 240);
+                }
+            }
+
+            & input {
+                box-shadow: inset 1px 3px 5px 0px rgb(184, 163, 87);
+                user-select: none;
+                padding: 0 1.2rem;
+                height: 2.5rem;
+                width: 22rem;
+                background: rgba(245, 217, 116, .7);
+                border-width: 0;
+                border-radius: 1.2rem;
+                text-align: center;
+    
+                &:focus {
+                    background: rgb(245, 217, 116);
+                }
+            }
+        }
+
+        & #sorting-block {
+            display: none;
+            display: flex;
+            position: fixed;
+            width: 10rem;
+            height: 10rem;
+            background: #eeeeee;
+            left: 37%;
+            top: 5%;
+            z-index: 1;
+            border-radius: 1.2rem;
+            box-shadow: 
+                0px 2px 8px 0px rgba(0, 0, 0, .5),
+                inset 0px 0px 0px 5px #e8b931,
+                inset 1px 1px 5px 5px rgba(0, 0, 0, .5);
+
+            padding: 1rem;
+
+            &.enabled {
+                display: flex;
             }
         }
 
