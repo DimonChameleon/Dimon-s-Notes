@@ -36,7 +36,7 @@ header {
     border-radius: 0 0 0.8rem 0.8rem;
     box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.4);
 
-    & div {
+    & .inner-block {
         background: #dadada;
         display: flex;
         justify-content: space-between;
@@ -72,6 +72,7 @@ header {
                 cursor: pointer;
                 border-radius: 50%;
                 padding: .2rem;
+                font-family: 'Material Symbols Outlined';
 
                 &:hover {
                     background: rgb(70, 70, 70);
@@ -99,9 +100,8 @@ header {
         & #sorting-block {
             display: none;
             display: flex;
+            flex-direction: column;
             position: fixed;
-            width: 10rem;
-            height: 10rem;
             background: #eeeeee;
             left: 37%;
             top: 5%;
@@ -111,11 +111,50 @@ header {
                 0px 2px 8px 0px rgba(0, 0, 0, .5),
                 inset 0px 0px 0px 5px #e8b931,
                 inset 1px 1px 5px 5px rgba(0, 0, 0, .5);
-
-            padding: 1rem;
+            padding: 1.3rem;
+            justify-content: center;
+            gap: 1.5rem;
 
             &.enabled {
                 display: flex;
+            }
+
+            & div {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+
+                & span {
+                    background: rgb(50, 50, 50);
+                    color: #fff;
+                    padding: .2rem;
+                    border-radius: .4rem;
+                    font-family: Roboto;
+                    cursor: pointer;
+                    opacity: .75;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    &:first-child {
+                        width: 7rem;
+                        font-size: 1rem;
+                        text-align: center;
+                        display: inline;
+                    }
+
+                    &:last-child {
+                        font-family: 'Material Symbols Outlined';
+                        padding: .2rem .4rem;
+                        border-radius: .7rem;
+
+                        &.disabled {
+                            pointer-events: none;
+                            opacity: .4;
+                        }
+                    }
+                }
             }
         }
 
