@@ -171,3 +171,37 @@ for (const [i, fontButton] of fontButtons.entries()) {
 
 const filterButton = document.querySelector('header section span')
 filterButton.onpointerup = () => document.querySelector('#sorting-block').classList.toggle('enabled')
+
+const alphabetSortButton = document.querySelector('aside div span:first-child')
+alphabetSortButton.onpointerup = () => alphabetButton.classList.toggle('disabled')
+
+const alphabetButton = document.querySelector('aside div span:last-child')
+
+alphabetButton.onpointerup = () => {
+  SortButton(alphabetButton)
+}
+
+/////////////////////////
+
+const dateSortButton = document.querySelector('aside div:last-child span:first-child')
+dateSortButton.onpointerup = () => dateButton.classList.toggle('disabled')
+
+const dateButton = document.querySelector('aside div:last-child span:last-child')
+
+dateButton.onpointerup = () => {
+  SortButton(dateButton)
+}
+
+function SortButton(button) {
+  if (button.textContent === 'unfold_more') {
+    // sorting by ascending
+    button.textContent = 'arrow_drop_up'
+  } else if (button.textContent === 'arrow_drop_up') {
+    // sorting by descending
+    button.textContent = 'arrow_drop_down'
+  } else {
+    // no sorting (default)
+    button.textContent = 'unfold_more'
+  }
+}
+
