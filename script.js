@@ -120,7 +120,6 @@ const searchNote = e => {
 
   const filteredNotes = notes.filter(note => (note.title.toLowerCase().includes(searchStr) || note.text.toLowerCase().includes(searchStr)))
 
-
   if (!filteredNotes.length) {
     if (ul.querySelector('img')) {
       return
@@ -175,33 +174,29 @@ filterButton.onpointerup = () => document.querySelector('#sorting-block').classL
 const alphabetSortButton = document.querySelector('aside div span:first-child')
 alphabetSortButton.onpointerup = () => alphabetButton.classList.toggle('disabled')
 
-const alphabetButton = document.querySelector('aside div span:last-child')
-
-alphabetButton.onpointerup = () => {
-  SortButton(alphabetButton)
-}
-
-/////////////////////////
-
 const dateSortButton = document.querySelector('aside div:last-child span:first-child')
 dateSortButton.onpointerup = () => dateButton.classList.toggle('disabled')
 
+const alphabetButton = document.querySelector('aside div span:last-child')
+alphabetButton.onpointerup = () => sortNotes(alphabetButton)
+
 const dateButton = document.querySelector('aside div:last-child span:last-child')
+dateButton.onpointerup = () => sortNotes(dateButton)
 
-dateButton.onpointerup = () => {
-  SortButton(dateButton)
-}
+const sortNotes = button => {
+  const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]")
+  const sortedNotes = [...notes]
+  ul.innerHTML = ''
 
-function SortButton(button) {
   if (button.textContent === 'unfold_more') {
-    // sorting by ascending
     button.textContent = 'arrow_drop_up'
+    sortedNotes.sort((a, b) => a.title.localeCompare(b.title))
   } else if (button.textContent === 'arrow_drop_up') {
-    // sorting by descending
     button.textContent = 'arrow_drop_down'
+    sortedNotes.sort((a, b) => b.title.localeCompare(a.title))
   } else {
-    // no sorting (default)
     button.textContent = 'unfold_more'
   }
-}
 
+  sortedNotes.forEach(note => ul.append(createNoteMarkup(note)))
+}
