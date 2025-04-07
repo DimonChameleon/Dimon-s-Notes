@@ -10,7 +10,7 @@ addNote.onpointerup = () => {
 const closeNoteModal = () => notesModal.style.display = ''
 
 const createNoteMarkup = note => {
-  const titleSpan = document.createElement("span");
+  const titleSpan = document.createElement('span')
   titleSpan.textContent = note.title
   titleSpan.className = 'noteTitle'
 
@@ -69,7 +69,7 @@ const createNoteMarkup = note => {
     }
   }
 
-  const li = document.createElement("li")
+  const li = document.createElement('li')
   li.style.background = note.color
   li.append(panelDiv, deleteIcon)
   return li
@@ -199,4 +199,36 @@ const sortNotes = button => {
   }
 
   sortedNotes.forEach(note => ul.append(createNoteMarkup(note)))
+}
+
+// const animateNode = node => {
+//   node.classList.remove('animate')
+//   setTimeout(() => node.classList.add('animate'), 1)
+// }
+
+const firstNote = document.querySelector('li')
+// animateNode(firstNote)
+// setTimeout(() => animateNode(firstNote), 300)
+// setTimeout(() => animateNode(firstNote), 600)
+// setTimeout(() => animateNode(firstNote), 900)
+// setTimeout(() => animateNode(firstNote), 1_200)
+
+// from {
+//   opacity: 0;
+//   transform: translateY(1.5rem);
+// }
+// to {
+//   opacity: 1;
+//   transform: translateY(0);
+// }
+
+const duration = 300
+
+const animateNode = node => node.animate([
+  { opacity: 0, transform: 'translateY(1.5rem)' },
+  { opacity: 1, transform: 'translateY(0)' }
+], duration)
+
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => animateNode(firstNote), duration * i)
 }
