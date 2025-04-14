@@ -106,7 +106,7 @@ const saveNote = () => {
 }
 
 const notes = JSON.parse(localStorage.getItem("saved-notes") || "[]")
-const ul = document.querySelector("main ul");
+const ul = document.querySelector('main ul')
 notes.forEach(note => ul.append(createNoteMarkup(note)))
 
 const searchNote = e => {
@@ -201,34 +201,12 @@ const sortNotes = button => {
   sortedNotes.forEach(note => ul.append(createNoteMarkup(note)))
 }
 
-// const animateNode = node => {
-//   node.classList.remove('animate')
-//   setTimeout(() => node.classList.add('animate'), 1)
-// }
+ul.onpointerup = e => {
+  const li = e.target.closest('li')
 
-const firstNote = document.querySelector('li')
-// animateNode(firstNote)
-// setTimeout(() => animateNode(firstNote), 300)
-// setTimeout(() => animateNode(firstNote), 600)
-// setTimeout(() => animateNode(firstNote), 900)
-// setTimeout(() => animateNode(firstNote), 1_200)
+  if (!li) {
+    return
+  }
 
-// from {
-//   opacity: 0;
-//   transform: translateY(1.5rem);
-// }
-// to {
-//   opacity: 1;
-//   transform: translateY(0);
-// }
-
-const duration = 300
-
-const animateNode = node => node.animate([
-  { opacity: 0, transform: 'translateY(1.5rem)' },
-  { opacity: 1, transform: 'translateY(0)' }
-], duration)
-
-for (let i = 0; i < 5; i++) {
-  setTimeout(() => animateNode(firstNote), duration * i)
+  console.log(li)
 }
