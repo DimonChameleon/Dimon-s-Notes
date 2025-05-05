@@ -202,11 +202,11 @@ const sortNotes = button => {
 }
 
 ul.onpointerup = e => {
-  const li = e.target.closest('li');
+  const li = e.target.closest('li')
 
   if (!li) {
-    return;
+    return
   }
 
-  li.classList.toggle('active');
+  li.className = li.classList.length ? '' : 'active'
 }
