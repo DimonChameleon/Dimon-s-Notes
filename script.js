@@ -202,11 +202,67 @@ const sortNotes = button => {
 }
 
 ul.onpointerup = e => {
-  const li = e.target.closest('li')
+  const li = e.target.closest('li');
 
   if (!li) {
-    return
+    return;
   }
 
-  li.className = li.classList.length ? '' : 'active'
+  li.classList.toggle('active');
 }
+
+
+// ⬇ Домашнее задание ⬇
+
+
+const testList = '         kolbasa           '
+function trimStart(str) {
+  let i = 0;
+  while (str[i] === ' ') {
+    i++;
+  }
+  return str.slice(i);
+}
+
+console.log(' ')
+console.log('DIY trimStart:')
+console.log("|", trimStart(testList), "|") // я решил добавить знаки "|" чтобы было удобнее понимать где заканчивается строка
+
+function trimEnd(str) {
+  let i = str.length - 1;
+  while (str[i] === ' ') {
+    i--;
+  }
+  return str.slice(0, i + 1);
+}
+
+console.log(' ')
+console.log('DIY trimEnd:')
+console.log("|", trimEnd(testList), "|")
+
+function trim(str) {
+  return trimEnd(trimStart(str));
+}
+
+console.log(' ')
+console.log('DIY trim:')
+console.log("|", trim(testList), "|")
+
+function indexOf(str, target) {
+  for (let i = 0; i < str.length; i++) {
+    let match = true;
+    for (let j = 0; j < target.length; j++) {
+      if (str[i + j] !== target[j]) {
+        match = false;
+        break;
+      }
+    }
+    if (match) return i;
+  }
+  return -1;
+}
+const testIndex = 'Hello mr. kolbaska!'
+
+console.log(' ')
+console.log('DIY IndexOf:')
+console.log(indexOf(testIndex, 'r')) // должно быть 7 (наверное)
