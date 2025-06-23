@@ -1,38 +1,41 @@
-// 1) 
-const str = '1,2,3,4,5';
-const arrNumbers = str.split(',').map(Number);
-console.log('Задание 1:', arrNumbers); // [1, 2, 3, 4, 5]
+const numbers = [6, 3, 7, 9, 1]
+const result = numbers.join()
+console.log(result)
 
-// 2) 
+const join = (list, separator = ' ') => {
+    let str = ''
 
-// map
-const tripledMap = arrNumbers.map(n => n * 3);
-console.log('Задание 2 (map):', tripledMap);
+    for (const n of list) {
+        str += n + separator
+    }
 
-// for
-const tripledFor = [];
-for (let i = 0; i < arrNumbers.length; i++) {
-  tripledFor.push(arrNumbers[i] * 3);
-}
-console.log('Задание 2 (for):', tripledFor);
-
-// 3) 
-
-const inputStr = prompt('Введите коэффициенты через запятую:');
-const inputArrStr = inputStr?.split(',') ?? [];
-
-// а) 
-const inputNums = inputArrStr
-  .map(s => Number(s.trim()))
-  .filter(n => !isNaN(n));
-
-// в) 
-const invalidElems = inputArrStr.filter(s => isNaN(Number(s.trim())));
-if (invalidElems.length > 0) {
-  console.warn('Игнорированы некорректные значения:', invalidElems);
+    return str.slice(0, str.length - separator.length)
 }
 
-// б)
-const sumKoefs = inputNums.reduce((acc, val) => acc + val, 0);
+console.log(join(numbers))
 
-console.log('Задание 3 — сумма корректных коэффициентов:', sumKoefs);
+// 1)
+console.log(join([1, 2, 3], '-'))
+console.log(join(['a', 'b', 'c'], ''))
+console.log(join([true, false], ','))
+console.log(join([], '|'))
+
+// 2)
+const split = (str, separator) => {
+  const result = []
+  let temp = ''
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === separator) {
+      result.push(temp)
+      temp = ''
+    } else {
+      temp += str[i]
+    }
+  }
+
+  result.push(temp)
+  return result
+}
+
+console.log(split(['a', 'b', 'c'], '-'))
