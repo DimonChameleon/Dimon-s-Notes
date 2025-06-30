@@ -1,41 +1,41 @@
-const numbers = [6, 3, 7, 9, 1]
-const result = numbers.join()
-console.log(result)
-
-const join = (list, separator = ' ') => {
-    let str = ''
-
-    for (const n of list) {
-        str += n + separator
-    }
-
-    return str.slice(0, str.length - separator.length)
-}
-
-console.log(join(numbers))
-
 // 1)
-console.log(join([1, 2, 3], '-'))
-console.log(join(['a', 'b', 'c'], ''))
-console.log(join([true, false], ','))
-console.log(join([], '|'))
+const inputNums = [1, 2, 3, 4, 5];
 
+// с reduce
+const sumKoefs = inputNums.reduce((acc, val) => acc + val, 0);
+console.log("Сумма с reduce:", sumKoefs);
+
+// без reduce
+let sumKoefs2 = 0;
+for (const num of inputNums) {
+  sumKoefs2 += num;
+}
+console.log("Сумма без reduce:", sumKoefs2);
 // 2)
-const split = (str, separator) => {
-  const result = []
-  let temp = ''
+const humans = [
+  { age: 25, weight: 70 },
+  { age: 30, weight: 80 },
+  { age: 20, weight: 60 }
+];
 
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] === separator) {
-      result.push(temp)
-      temp = ''
-    } else {
-      temp += str[i]
-    }
-  }
+// с reduce
+const total = humans.reduce(
+  (acc, h) => {
+    acc.age += h.age;
+    acc.weight += h.weight;
+    return acc;
+  },
+  { age: 0, weight: 0 }
+);
+console.log("Сумма с reduce:", total);
 
-  result.push(temp)
-  return result
+// без reduce
+let ageSum = 0;
+let weightSum = 0;
+
+for (const h of humans) {
+  ageSum += h.age;
+  weightSum += h.weight;
 }
 
-console.log(split(['a', 'b', 'c'], '-'))
+console.log("Сумма без reduce:", { age: ageSum, weight: weightSum });
