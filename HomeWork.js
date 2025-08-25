@@ -1,25 +1,65 @@
-function mySome(arr, value) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === value) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function myEvery(arr, value) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== value) {
+function every(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    if (!callback(array[i], i, array)) {
       return false;
     }
   }
   return true;
 }
 
-let nums = [1, 2, 3, 3, 3];
+function some(array, callback) {
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      return true;
+    }
+  }
+  return false;
+}
 
-console.log(mySome(nums, 2)); // true
-console.log(mySome(nums, 5)); // false
+function filter(array, callback) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i], i, array)) {
+      result.push(array[i]);
+    }
+  }
+  return result;
+}
 
-console.log(myEvery(nums, 3)); // false
-console.log(myEvery([3,3,3], 3)); // true
+const numbers = [1, 2, 3, 4, 5];
+
+console.log(every(numbers, n => n > 0));   // true
+console.log(every(numbers, n => n < 3));   // false
+
+console.log(some(numbers, n => n === 3));  // true
+console.log(some(numbers, n => n > 10));   // false
+
+console.log(filter(numbers, n => n % 2 === 0)); // [2, 4]
+console.log(filter(numbers, n => n > 3));       // [4, 5]
+
+const humans = [
+  { age: 25, weight: 70 },
+  { age: 32, weight: 80 },
+  { age: 18, weight: 60 },
+  { age: 45, weight: 90 },
+  { age: 29, weight: 75 }
+];
+
+const sumReduce = humans.reduce(
+  function (acc, human) {
+    acc.age += human.age;
+    acc.weight += human.weight;
+    return acc;
+  },
+  { age: 0, weight: 0 }
+);
+
+console.log('Сумма через reduce:', sumReduce);
+
+let ageSum = 0;
+let weightSum = 0;
+for (let i = 0; i < humans.length; i++) {
+  ageSum += humans[i].age;
+  weightSum += humans[i].weight;
+}
+console.log('Сумма без reduce:', { age: ageSum, weight: weightSum });
