@@ -1,17 +1,13 @@
 function every(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    if (!callback(array[i], i, array)) {
-      return false;
-    }
+    if (!callback(array[i])) return false;
   }
   return true;
 }
 
 function some(array, callback) {
   for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      return true;
-    }
+    if (callback(array[i])) return true;
   }
   return false;
 }
@@ -19,9 +15,7 @@ function some(array, callback) {
 function filter(array, callback) {
   const result = [];
   for (let i = 0; i < array.length; i++) {
-    if (callback(array[i], i, array)) {
-      result.push(array[i]);
-    }
+    if (callback(array[i])) result.push(array[i]);
   }
   return result;
 }
@@ -46,18 +40,16 @@ const humans = [
 ];
 
 const sumReduce = humans.reduce(
-  function (acc, human) {
-    acc.age += human.age;
-    acc.weight += human.weight;
-    return acc;
-  },
+  (acc, human) => ({
+    age: acc.age + human.age,
+    weight: acc.weight + human.weight
+  }),
   { age: 0, weight: 0 }
 );
 
 console.log('Сумма через reduce:', sumReduce);
 
-let ageSum = 0;
-let weightSum = 0;
+let ageSum = 0, weightSum = 0;
 for (let i = 0; i < humans.length; i++) {
   ageSum += humans[i].age;
   weightSum += humans[i].weight;
