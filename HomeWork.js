@@ -1,21 +1,28 @@
-function every(array, callback) {
-  for (let i = 0; i < array.length; i++) {
-    if (!callback(array[i])) return false;
+const every = (list, f) => {
+  for (const n of list) {
+    if (!f(n)) {
+      return false
+    }
   }
-  return true;
+
+        return true
 }
 
-function some(array, callback) {
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i])) return true;
+const some = (list, f) => {
+  for (const n of list) {
+    if (f(n)) {
+      return true;
+    }
   }
   return false;
 }
 
-function filter(array, callback) {
+const filter = (list, f) => {
   const result = [];
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i])) result.push(array[i]);
+  for (const n of list) {
+    if (f(n)) {
+      result.push(n);
+    }
   }
   return result;
 }
