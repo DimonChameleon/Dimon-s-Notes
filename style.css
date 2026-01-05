@@ -194,12 +194,11 @@ main {
             width: 10rem;
             height: 6rem;
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+            gap: .5rem;
             border-radius: 1rem;
             cursor: pointer;
             background: #ffe8a3;
-            padding: 1rem 0.4rem 0.4rem 1rem;
+            padding: .7rem;
             display: flex;
             justify-content: space-between;
             box-shadow:
@@ -214,24 +213,31 @@ main {
             & div {
                 display: flex;
                 flex-direction: column;
-                gap: .3rem;
 
-                & span {
-                    &:first-child {
-                        font-weight: bold;
-                        color: rgb(30, 30, 30);
-                        font-size: 1.1rem;
-                    }
+                &:first-child {
+                    gap: .3rem;
 
-                    &:last-child {
-                        color: rgb(70, 70, 70);
+                    & span {
+                        &:first-child {
+                            font-weight: bold;
+                            color: rgb(30 30 30);
+                            font-size: 1.1rem;
+                        }
+
+                        &:last-child {
+                            color: rgb(70 70 70);
+                        }
                     }
+                }
+
+                &:last-child {
+                    justify-content: space-between;
                 }
             }
 
             & .material-symbols-outlined {
                 color: rgb(151, 0, 0);
-                background: rgba(0, 0, 0, .160);
+                background: rgb(0 0 0 / .16);
                 padding: .3rem;
                 border-radius: 50%;
                 align-self: end;
