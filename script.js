@@ -36,6 +36,14 @@ const createNoteMarkup = note => {
   const panelDiv = document.createElement('div')
   panelDiv.append(titleSpan, textSpan)
 
+  const favoriteIcon = document.createElement('span')
+  favoriteIcon.classList = 'material-symbols-outlined'
+  favoriteIcon.textContent = 'star'
+
+  favoriteIcon.onpointerup = () => {
+    console.log('favorite pressed')
+  }
+
   const deleteIcon = document.createElement('span')
   deleteIcon.classList = 'material-symbols-outlined'
   deleteIcon.textContent = 'delete'
@@ -69,9 +77,12 @@ const createNoteMarkup = note => {
     }
   }
 
+  const iconsDiv = document.createElement('div')
+  iconsDiv.append(favoriteIcon, deleteIcon)
+
   const li = document.createElement('li')
   li.style.background = note.color
-  li.append(panelDiv, deleteIcon)
+  li.append(panelDiv, iconsDiv)
   return li
 }
 
