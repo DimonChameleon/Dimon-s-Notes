@@ -40,6 +40,17 @@ const createNoteMarkup = note => {
   favoriteIcon.classList = 'material-symbols-outlined'
   favoriteIcon.textContent = 'star'
 
+  /*
+
+  Логика нажатия "избранного":
+
+  1) поменять стиль кнопки со звездочкой (в зависимости от нажатия)
+  2) найти нужную заметку в localStorage и поменять этому объекту свойство 'isFavorite'
+  3) перерисовать экран с заметками
+  * найти правильное место для избранной заметки
+  
+  */
+
   favoriteIcon.onpointerup = () => {
     console.log('favorite pressed')
   }
