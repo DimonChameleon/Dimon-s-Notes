@@ -236,17 +236,24 @@ main {
             }
 
             & .material-symbols-outlined {
-                color: rgb(151, 0, 0);
-                background: rgb(0 0 0 / .16);
                 padding: .3rem;
                 border-radius: 50%;
                 align-self: end;
-                box-shadow: inset 1px 2px 5px 0px rgba(0, 0, 0, .239);
+                box-shadow: inset 1px 2px 5px 0px rgb(0 0 0 / .239);
                 user-select: none;
+                transition: .1s;
 
-                &:hover {
-                    background: rgb(190, 190, 190);
-                    color: rgba(255, 49, 49, .9);
+                &:first-child {
+                    color: rgb(100 100 100);
+                }
+
+                &:last-child {
+                    color: rgb(220 20 60);
+                }
+
+                &:active {
+                    opacity: .7;
+                    scale: .97;
                 }
             }
         }
@@ -256,6 +263,26 @@ main {
             filter: drop-shadow(#525d6d 2px 2px .5px);
             width: 5rem;
         }
+    }
+}
+
+@media (hover: hover) {
+    main ul li .material-symbols-outlined {
+        &:first-child:hover {
+            background: rgb(255 191 0 / .9);
+            color: rgb(30 30 30);
+        }
+
+        &:last-child:hover {
+            background: rgb(220 20 60 / .8);
+            color: rgb(230 230 230);
+        }
+    }
+}
+
+@media (hover: none) {
+    * {
+        -webkit-tap-highlight-color: rgb(0 0 0 / 0);
     }
 }
 
@@ -286,8 +313,8 @@ main {
 
 .modal-content {
     background: #ffe8a3;
-    padding: 0.25rem 1rem;
-    padding-right: 0.25rem;
+    padding: .25rem 1rem;
+    padding-right: .25rem;
     width: 34rem;
     height: 22rem;
     border-radius: 1rem;
