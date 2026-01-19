@@ -201,9 +201,7 @@ main {
             padding: .7rem;
             display: flex;
             justify-content: space-between;
-            box-shadow:
-                2px 3px 7px rgba(0, 0, 0, .25),
-                0 10px 10px rgba(0, 0, 0, .22);
+            box-shadow: 2px 3px 7px rgb(0 0 0 / .25), 0 10px 10px rgb(0 0 0 / .22);
             transition: .3s;
 
             &:hover {
@@ -245,6 +243,14 @@ main {
 
                 &:first-child {
                     color: rgb(100 100 100);
+                    
+                    &.favorite {
+                        background: rgb(255 191 0 / .9);
+
+                        &:hover {
+                            background: rgb(255 191 0 / .6);
+                        }
+                    }
                 }
 
                 &:last-child {
