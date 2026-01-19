@@ -44,7 +44,7 @@ const createNoteMarkup = note => {
 
   Логика нажатия "избранного":
 
-  1) поменять стиль кнопки со звездочкой (в зависимости от нажатия)
+  DONE 1) поменять стиль кнопки со звездочкой (в зависимости от нажатия)
   2) найти нужную заметку в localStorage и поменять этому объекту свойство 'isFavorite'
   3) перерисовать экран с заметками
   * найти правильное место для избранной заметки
@@ -52,11 +52,19 @@ const createNoteMarkup = note => {
   */
 
   favoriteIcon.onpointerup = () => {
-    console.log('favorite pressed')
+    if (favoriteIcon.classList.contains('favorite')) {
+      favoriteIcon.classList.remove('favorite')
+      notes[0].isFavorite = false
+    } else {
+      favoriteIcon.classList.add('favorite')
+      notes[0].isFavorite = true
+    }
+
+    localStorage.setItem('saved-notes', JSON.stringify(notes))
   }
 
   const deleteIcon = document.createElement('span')
-  deleteIcon.classList = 'material-symbols-outlined'
+  deleteIcon.className = 'material-symbols-outlined'
   deleteIcon.textContent = 'delete'
 
   deleteIcon.onpointerup = () => {
