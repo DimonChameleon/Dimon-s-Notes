@@ -16,12 +16,13 @@ const createNoteMarkup = note => {
 
   const textSpan = document.createElement("span");
   textSpan.textContent = note.text
+  textSpan.className = 'noteText'
 
   if (note.font) {
     if (note.font.includes('bold')) {
       textSpan.style.fontWeight = 'bold'
     }
-
+// 
     if (note.font.includes('italic')) {
       textSpan.style.fontStyle = 'italic'
     }
