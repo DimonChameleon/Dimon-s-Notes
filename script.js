@@ -22,7 +22,7 @@ const createNoteMarkup = note => {
     if (note.font.includes('bold')) {
       textSpan.style.fontWeight = 'bold'
     }
-// 
+
     if (note.font.includes('italic')) {
       textSpan.style.fontStyle = 'italic'
     }
@@ -45,20 +45,25 @@ const createNoteMarkup = note => {
 
   Логика нажатия "избранного":
 
-  DONE 1) поменять стиль кнопки со звездочкой (в зависимости от нажатия)
-  2) найти нужную заметку в localStorage и поменять этому объекту свойство 'isFavorite'
-  3) перерисовать экран с заметками
+  1) найти нужную заметку в localStorage и поменять этому объекту свойство 'isFavorite'
+  2) перерисовать экран с заметками
   * найти правильное место для избранной заметки
   
   */
 
   favoriteIcon.onpointerup = () => {
+    const spans = li.querySelectorAll('div span')
+    const title = spans.item(0).textContent
+    const text = spans.item(1).textContent
+
+    const index = notes.findIndex(note => note.title === title && note.text === text)
+
     if (favoriteIcon.classList.contains('favorite')) {
       favoriteIcon.classList.remove('favorite')
-      notes[0].isFavorite = false
+      notes[index].isFavorite = false
     } else {
       favoriteIcon.classList.add('favorite')
-      notes[0].isFavorite = true
+      notes[index].isFavorite = true
     }
 
     localStorage.setItem('saved-notes', JSON.stringify(notes))
@@ -241,59 +246,3 @@ ul.onpointerup = e => {
 
   li.classList.toggle('active');
 }
-
-
-// ⬇ Домашнее задание ⬇
-
-
-const testList = '         kolbasa           '
-function trimStart(str) {
-  let i = 0;
-  while (str[i] === ' ') {
-    i++;
-  }
-  return str.slice(i);
-}
-
-console.log(' ')
-console.log('DIY trimStart:')
-console.log("|", trimStart(testList), "|") // я решил добавить знаки "|" чтобы было удобнее понимать где заканчивается строка
-
-function trimEnd(str) {
-  let i = str.length - 1;
-  while (str[i] === ' ') {
-    i--;
-  }
-  return str.slice(0, i + 1);
-}
-
-console.log(' ')
-console.log('DIY trimEnd:')
-console.log("|", trimEnd(testList), "|")
-
-function trim(str) {
-  return trimEnd(trimStart(str));
-}
-
-console.log(' ')
-console.log('DIY trim:')
-console.log("|", trim(testList), "|")
-
-function indexOf(str, target) {
-  for (let i = 0; i < str.length; i++) {
-    let match = true;
-    for (let j = 0; j < target.length; j++) {
-      if (str[i + j] !== target[j]) {
-        match = false;
-        break;
-      }
-    }
-    if (match) return i;
-  }
-  return -1;
-}
-const testIndex = 'Hello mr. kolbaska!'
-
-console.log(' ')
-console.log('DIY IndexOf:')
-console.log(indexOf(testIndex, 'r')) // должно быть 7 (наверное)
