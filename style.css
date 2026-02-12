@@ -99,7 +99,6 @@ header {
 
         & #sorting-block {
             display: none;
-            display: flex;
             flex-direction: column;
             position: fixed;
             background: #eeeeee;
@@ -216,24 +215,16 @@ main {
                     gap: .3rem;
 
                     & span {
+                        word-break: break-word;
+
                         &:first-child {
                             font-weight: bold;
                             color: rgb(30 30 30);
                             font-size: 1.1rem;
-                            display: block;
-                            white-space: pre-wrap;
-                            overflow-wrap: anywhere;
-                            word-break: break-word;
-                            max-width: 95%;
                         }
 
                         &:last-child {
                             color: rgb(70 70 70);
-                            display: block;
-                            white-space: pre-wrap;
-                            overflow-wrap: anywhere;
-                            word-break: break-word;
-                            max-width: 95%;
                         }
                     }
                 }
